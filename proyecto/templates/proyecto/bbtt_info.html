@@ -1,0 +1,512 @@
+<!-- proyecto/bbtt_info.html -->
+
+{% extends "proyecto/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Proyecto</title>
+    <style>
+        .contenedor {
+            width: 80%; /* Ajusta el ancho según tus necesidades */
+            display: flex;
+            justify-content: space-between;
+            margin: 0.05% auto;
+        }
+        .cuadro {
+            width: 80%; /* Ajusta el ancho según tus necesidades */
+            box-sizing: border-box; /* Para incluir el padding y el borde en el ancho total */
+            margin: 0 auto;
+        }
+        .cuadro25 {
+            width: 25%; /* Ajusta el ancho según tus necesidades */
+            box-sizing: border-box; /* Para incluir el padding y el borde en el ancho total */
+        }
+        .cuadro75 {
+            width: 75%; /* Ajusta el ancho según tus necesidades */
+            margin: 0.1%; /* Espacio entre los cuadros */
+            box-sizing: border-box; /* Para incluir el padding y el borde en el ancho total */
+        }
+        .tabla-verde {
+            background-color: #00ff0013; /* Verde */
+        }
+        .tabla-azul {
+            background-color: #0077ff17; /* Azul */
+        }
+        .tabla-negra {
+            background-color: #000000; /* Azul */
+        }
+        .tabla-roja {
+            background-color: #ff323241; /* Azul */
+        }
+        .tabla-gris {
+            background-color: rgba(131, 131, 131, 0.192); /* Azul */
+        }
+        .tabla-aguamarina {
+            background-color: rgba(19, 206, 190, 0.151); /* Azul */
+        }
+        .tabla-amarillo {
+            background-color: rgba(250, 246, 31, 0.13); /* Azul */
+        }
+        h2 {
+            color: rgb(255, 255, 255); /* Texto blanco para mayor visibilidad */
+        }
+        h1 {
+            text-align: center; /* Centrar el texto */
+        }
+        h3 {
+            text-align: center; /* Centrar el texto */
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ cp }}</h1>
+    <h3>{{ fase }}</h3>
+    <h3>Bases técnicas</h3>
+    <div class= contenedor>
+    <!-- 1er cuadro -->
+        <table class="cuadro75 tabla-azul" style="border-collapse: collapse; border: 2px solid black;">
+            <tr>
+                <th colspan="2" style="background-color: rgba(17, 31, 161, 0.562); border-bottom: 2px solid black; text-align: center;"><h2>DATOS</h2></th>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Viviendas vulnerables:</td>
+                <td style="border-bottom: 1px solid black;">{{ num_solicitudes_vulnerables }}</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Viviendas totales:</td>
+                <td style="border-bottom: 1px solid black;">{{ viviendas }}</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">M2 comerciales:</td>
+                <td style="border-bottom: 1px solid black;">{{ metros_comercial_formateado }}</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Número de portales:</td>
+                <td style="border-bottom: 1px solid black;">{{ numero_portales }}</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Inversión en viviendas:</td>
+                <td style="border-bottom: 1px solid black;">{{ inversion_viviendas_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Inversión en locales:</td>
+                <td style="border-bottom: 1px solid black;">{{ inversion_locales_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Amianto:</td>
+                <td style="border-bottom: 1px solid black;">{{ amianto_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Instalaciones subvencionables:</td>
+                <td style="border-bottom: 1px solid black;">{{ instalaciones_subvencionables_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Inversión total subvencionable con IVA:</td>
+                <td style="border-bottom: 1px solid black;">{{ inversion_total_subvencionable_con_iva_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Tasas y licencias:</td>
+                <td style="border-bottom: 1px solid black;">{{ tasas_y_licencias_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Instalaciones no subvencionables:</td>
+                <td style="border-bottom: 1px solid black;">{{ instalaciones_no_subvencionables_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Total no subvencionable:</td>
+                <td style="border-bottom: 1px solid black;">{{ total_no_subvencionable_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Inversión total:</td>
+                <td style="border-bottom: 1px solid black;">{{ inversion_total_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Inversión realizada en el proyecto:</td>
+                <td style="border-bottom: 1px solid black;">{{ inversion_realizada_proyecto_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Inversión pendiente de realizar:</td>
+                <td style="border-bottom: 1px solid black;">{{ inversion_pendiente_de_realizar_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Inversión subvencionable pendiente:</td>
+                <td style="border-bottom: 1px solid black;">{{ inversion_subvencionable_pendiente_de_realizar_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Do gastos dirección obra:</td>
+                <td style="border-bottom: 1px solid black;">{{ do_gastos_direccion_obra_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Gestión AR:</td>
+                <td style="border-bottom: 1px solid black;">{{ gestion_ar_1er_cuadro_formateado }} €</td>
+            </tr>
+        </table>
+    <!-- 3er cuadro -->
+        <table class="cuadro75 tabla-aguamarina" style="border-collapse: collapse; border: 2px solid black;">
+            <tr>
+                <th colspan="2" style= "background-color: rgba(22, 161, 161, 0.541); border-bottom: 2px solid black; text-align: center;"><h2>SUBVENCIONES</h2></th>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Ayuda para viviendas:</td>
+                <td style="border-bottom: 1px solid black;">{{ ayuda_viviendas_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Ayuda para locales:</td>
+                <td style="border-bottom: 1px solid black;">{{ ayuda_locales_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Amianto:</td>
+                <td style="border-bottom: 1px solid black;">{{ amianto_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Subvención total:</td>
+                <td style="border-bottom: 1px solid black;">{{ subvencion_total_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Deducciones por ayudas recibidas:</td>
+                <td style="border-bottom: 1px solid black;">{{ inversion_realizada_proyecto_formateado }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Subvenciones anteriores:</td>
+                <td style="border-bottom: 1px solid black;">{{ subvenciones_anteriores_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Subvención después de deducciones:</td>
+                <td style="border-bottom: 1px solid black;">{{ subvencion_despues_deducciones_formateado }} €</td>
+            </tr>
+            <!-- Agrega bordes a las demás filas con el mismo formato -->
+        </table>    
+    </div>
+    <div class="contenedor">
+        <!-- 2do cuadro -->
+
+        <table class="cuadro75 tabla-gris" style="border-collapse: collapse; border: 2px solid black;">
+            <tr>
+                <th colspan="6" style= "background-color: rgba(131, 131, 131, 0.596); border-bottom: 2px solid black; text-align: center;"><h2>BASE DE LICITACIÓN</h2></th>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;"></td>
+                <td style="border-bottom: 1px solid black;">Obra Subv</td>
+                <td style="border-bottom: 1px solid black;">Amianto</td>
+                <td style="border-bottom: 1px solid black;">Ins. Subv.</td>
+                <td style="border-bottom: 1px solid black;">Ins. no Subv</td>
+                <td style="border-bottom: 1px solid black;">Total</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Base con IVA:</td>
+                <td style="border-bottom: 1px solid black;">{{ base_licitacion_proyecto_con_iva_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ amianto_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ instalaciones_subvencionables_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ instalaciones_no_subvencionables_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ base_licitacion_proyecto_con_iva_total_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Gastos:</td>
+                <td style="border-bottom: 1px solid black;">{{ gastos_financieros_notarias_tasaciones }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ gastos_financieros_notarias_tasaciones_amianto }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ gastos_financieros_notarias_tasaciones_instalaciones_subvencionables }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ gastos_financieros_notarias_tasaciones_instalaciones_no_subvencionables }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ gastos_financieros_notarias_tasaciones_total }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Abile:</td>
+                <td style="border-bottom: 1px solid black;">{{ abile_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ abile_amianto_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ abile_instalaciones_subvencionables_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ abile_instalaciones_no_subvencionables_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ abile_total_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Imprevistos:</td>
+                <td style="border-bottom: 1px solid black;">{{ imprevistos }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ imprevistos_amianto }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ imprevistos_instalaciones_subvencionables }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ imprevistos_instalaciones_no_subvencionables }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ imprevistos_total }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">PEC con IVA:</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_con_iva }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_con_iva_amianto }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_con_iva_instalaciones_subvencionables }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_con_iva_instalaciones_no_subvencionables }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_con_iva_total }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">PEC sin IVA:</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_amianto_2do_cuadro }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_instalaciones_subvencionables_2do_cuadro }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_instalaciones_no_subvencionables_2do_cuadro }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_total }} €</td>
+            </tr>
+        </table>
+        <table class="cuadro75 tabla-roja" style="border-collapse: collapse; border: 2px solid black;">
+            <tr>
+                <th colspan="5" style= "background-color: rgba(218, 57, 57, 0.589); border-bottom: 2px solid black; text-align: center;"><h2>TALLER DE ARQUITECTURA</h2></th>
+            </tr>
+            <tr>
+                <td class= tabla-negra colspan="5" style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <th colspan="5" style="border-bottom: 2px solid rgb(0, 0, 0);"><h4>AMIANTO</h4></th>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">PEC CON IVA</td>
+                <td style="border-bottom: 1px solid black;">IVA</td>
+                <td style="border-bottom: 1px solid black;">PEC</td>
+                <td style="border-bottom: 1px solid black;">GG+BI</td>
+                <td style="border-bottom: 1px solid black;">PEM</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">{{ amianto_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">10%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_amianto_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">19%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_amianto_final }} €</td>
+            </tr>
+            <tr>
+                <td class= tabla-negra colspan="5" style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <th colspan="5" style="border-bottom: 2px solid rgb(0, 0, 0);"><h4>INSTALACIONES SUBVENCIONABLES</h4></th>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">PEC CON IVA</td>
+                <td style="border-bottom: 1px solid black;">IVA</td>
+                <td style="border-bottom: 1px solid black;">PEC</td>
+                <td style="border-bottom: 1px solid black;">GG+BI</td>
+                <td style="border-bottom: 1px solid black;">PEM</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">{{ instalaciones_subvencionables_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">10%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_instalaciones_subvencionables_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">19%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_instalaciones_subvencionables_final }} €</td>
+            </tr>
+            <tr>
+                <td class= tabla-negra colspan="5" style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <th colspan="5" style="border-bottom: 2px solid rgb(0, 0, 0);"><h4>INSTALACIONES NO SUBVENCIONABLE</h4></th>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">PEC CON IVA</td>
+                <td style="border-bottom: 1px solid black;">IVA</td>
+                <td style="border-bottom: 1px solid black;">PEC</td>
+                <td style="border-bottom: 1px solid black;">GG+BI</td>
+                <td style="border-bottom: 1px solid black;">PEM</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">{{ instalaciones_no_subvencionables_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">10%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_instalaciones_no_subvencionables }} €</td>
+                <td style="border-bottom: 1px solid black;">19%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_instalaciones_no_subvencionables_final }} €</td>
+            </tr>
+            <tr>
+                <td class= tabla-negra colspan="5" style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <th colspan="5" style="border-bottom: 2px solid rgb(0, 0, 0);"><h4>PROYECTO SUBVENCIONABLE</h4></th>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">PEC CON IVA</td>
+                <td style="border-bottom: 1px solid black;">IVA</td>
+                <td style="border-bottom: 1px solid black;">PEC</td>
+                <td style="border-bottom: 1px solid black;">GG+BI</td>
+                <td style="border-bottom: 1px solid black;">PEM</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">{{ base_licitacion_proyecto_con_iva_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">10%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_base_licitacion_proyecto_con_iva }} €</td>
+                <td style="border-bottom: 1px solid black;">19%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_base_licitacion_proyecto_con_iva_final }} €</td>
+            </tr>
+            <tr>
+                <td class= tabla-negra colspan="5" style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <th colspan="5" style="border-bottom: 2px solid rgb(0, 0, 0);"><h4>TOTAL PROYECTO</h4></th>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">PEC CON IVA</td>
+                <td style="border-bottom: 1px solid black;">IVA</td>
+                <td style="border-bottom: 1px solid black;">PEC</td>
+                <td style="border-bottom: 1px solid black;">GG+BI</td>
+                <td style="border-bottom: 1px solid black;">PEM</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">{{ base_licitacion_proyecto_con_iva_total_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;">10%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_base_licitacion_proyecto_con_iva_total }} €</td>
+                <td style="border-bottom: 1px solid black;">19%</td>
+                <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_base_licitacion_proyecto_con_iva_total_final }} €</td>
+            </tr>
+        </table>
+    </div>
+    <div class="contenedor">
+        <!-- Anexo 1 -->
+            <table class="tabla-verde" style="border-collapse: collapse; border: 2px solid black;">
+                <tr>
+                    <th colspan="4" style= "background-color: rgba(17, 168, 17, 0.5); border-bottom: 2px solid black; text-align: center;"><h2>ANEXO 1 JCCM</h2></th>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="border-bottom: 1px solid black;"></td>
+                    <td style="border-bottom: 1px solid black;">SIN IVA</td>
+                    <td style="border-bottom: 1px solid black;">AR</td>
+                    <td style="border-bottom: 1px solid black;">JCCM</td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid black;">Coste estimado total de las actuaciones:</td>
+                    <td style="border-bottom: 1px solid black;">{{ sin_iva_total_incluido_no_subv_jccm }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ total_incluido_no_subv_ar }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ total_incluido_no_subv_jccm }} €</td>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="border-bottom: 1px solid black;">Obra civil vinculada a la actuación:</td>
+                    <td style="border-bottom: 1px solid black;">{{ sin_iva_base_licitacion_proyecto_con_iva }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ base_licitacion_proyecto_con_iva_formateado }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ base_licitacion_proyecto_con_iva_formateado }} €</td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid black;">Subvenciones anteriores:</td>
+                    <td style="border-bottom: 1px solid black;">{{ sin_iva_subvenciones_anteriores }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ subvenciones_anteriores_formateado }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ subvenciones_anteriores_formateado }} €</td>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="border-bottom: 1px solid black;">D.O. Honorarios de los profesionales intervinientes:</td>
+                    <td style="border-bottom: 1px solid black;">{{ sin_iva_do_gastos_direccion_obra }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ do_gastos_direccion_obra_formateado }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ do_gastos_direccion_obra_formateado }} €</td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid black;">Redacción del proyecto:</td>
+                    <td style="border-bottom: 1px solid black;">{{ sin_iva_suma_ayuda_proyecto }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ inversion_realizada_proyecto_formateado }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ inversion_realizada_proyecto_formateado }} €</td>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="border-bottom: 1px solid black;">Gestión:</td>
+                    <td style="border-bottom: 1px solid black;">{{ sin_iva_gestion_jccm }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ gestion_ar }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ gestion_jccm }} €</td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid black;">Retirada de amianto:</td>
+                    <td style="border-bottom: 1px solid black;">{{ pec_sin_iva_amianto_formateado }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ amianto_formateado }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ amianto_formateado }} €</td>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="border-bottom: 1px solid black;">Coste estimado total actuaciones subvencionables:</td>
+                    <td style="border-bottom: 1px solid black;">{{ sin_iva_coste_estimado_total_actuaciones_subvencionables_jccm }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ coste_estimado_total_actuaciones_subvencionables_ar }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ coste_estimado_total_actuaciones_subvencionables_jccm }} €</td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid black;">Coste estimado total actuaciones subvencionables:</td>
+                    <td style="border-bottom: 1px solid black;">{{ sin_iva_total_incluido_no_subv_jccm }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ total_incluido_no_subv_ar }} €</td>
+                    <td style="border-bottom: 1px solid black;">{{ total_incluido_no_subv_jccm }} €</td>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="border-bottom: 1px solid black;">Subvención:</td>
+                    <td style="border-bottom: 1px solid black;">{{ subvencion_1 }} €</td>
+                    <td style="border-bottom: 1px solid black;"></td>
+                    <td style="border-bottom: 1px solid black;"></td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid black;">Subvención:</td>
+                    <td style="border-bottom: 1px solid black;">{{ subvencion_2 }} €</td>
+                    <td style="border-bottom: 1px solid black;"></td>
+                    <td style="border-bottom: 1px solid black;"></td>
+                </tr>
+            </table>
+    </div>
+    <table class="cuadro tabla-amarillo" style="border-collapse: collapse; border: 2px solid black;">
+            <tr>
+                <th colspan="4" style= "background-color: rgba(216, 230, 20, 0.63); border-bottom: 2px solid black; text-align: center;"><h2>OTROS DATOS</h2></th>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;"></td>
+                <td style="border-bottom: 1px solid black;">JCCM</td>
+                <td style="border-bottom: 1px solid black;">AR</td>
+                <td style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Viviendas no vulnerables:</td>
+                <td style="border-bottom: 1px solid black;">{{ viviendas_no_vulnerables }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">M2 locales:</td>
+                <td style="border-bottom: 1px solid black;">{{ m2_locales }} €</td>
+                <td style="border-bottom: 1px solid black;"></td>
+                <td style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;"></td>
+                <td style="border-bottom: 1px solid black;"></td>
+                <td style="border-bottom: 1px solid black;">CRITERIO 80%</td>
+                <td style="border-bottom: 1px solid black;">MENOR</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Subvención total no vulnerables AR:</td>
+                <td style="border-bottom: 1px solid black;">{{ subvencion_total_no_vulnerables_jccm }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ subvencion_total_no_vulnerables_ar }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ menor_sub_no_vul }} €</td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Subvención total vulnerables AR:</td>
+                <td style="border-bottom: 1px solid black;">{{ subvencion_total_vulnerables_jccm }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ subvencion_total_vulnerables_ar }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ menor_sub_vul }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Amianto:</td>
+                <td style="border-bottom: 1px solid black;">{{ amianto_formateado }} €</td>
+                <td style="border-bottom: 1px solid black;"></td>
+                <td style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Proyecto:</td>
+                <td style="border-bottom: 1px solid black;">{{ inversion_realizada_proyecto_formateado }} €</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;"></td>
+                <td style="border-bottom: 1px solid black;"></td>
+                <td style="border-bottom: 1px solid black;">GESTIÓN</td>
+                <td style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">Total subvención:</td>
+                <td style="border-bottom: 1px solid black;">{{ total_subvencion_p3 }} €</td>
+                <td style="border-bottom: 1px solid black;">{{ gestion_ar }} €</td>
+                <td style="border-bottom: 1px solid black;">7,5% SUBV</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="border-bottom: 1px solid black;">Anticipo 25%:</td>
+                <td style="border-bottom: 1px solid black;">{{ anticipo }} €</td>
+                <td style="border-bottom: 1px solid black;"></td>
+                <td style="border-bottom: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 1px solid black;">% participación de viviendas:</td>
+                <td style="border-bottom: 1px solid black;">{{ porcentaje_viviendas }}</td>
+            </tr>
+    </table>
+    <p></p>
+</body>
+<p></p>
+</html>
+
+{% endblock %}

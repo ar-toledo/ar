@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Zona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* Cambiar cursor a mano para filas clickeables */
+        .clickable-row {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalle Zona - {{ nombre }}</h1>
+
+    {% if prefacturas %}
+    <table>
+        <thead>
+            <tr>
+                <th>Proyecto</th>
+                <th>Fase</th>
+                <th>Expediente</th>
+                <th>Para</th>
+                <th>Información</th>
+                <th>Fecha</th>
+                <th>Base</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prefactura in prefacturas %}
+            <tr>
+                <td>{{ prefactura.proyecto.cp }}</td>
+                <td>{{ prefactura.fase }}</td>
+                <td>{{ prefactura.expediente }}</td>
+                <td>{{ prefactura.get_para_display }}</td>
+                <td>{{ prefactura.informacion }}</td>
+                <td>{{ prefactura.fecha }}</td>
+                <td>{{ prefactura.base }} €</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No se encontraron prefacturas para esta zona.</p>
+    {% endif %}
+
+    <h2>Resumen</h2>
+    <ul>
+        <li>Viviendas: {{ viviendas }}</li>
+        <li>Total Obras Parcialidad 0 y 2: {{ totallee }} €</li>
+        <li>Total Obras Parcialidad 5: {{ totalpry5 }} €</li>
+        <li>Total Parcialidad 5: {{ totalp5 }} €</li>
+        <li>Total Proyecto 3: {{ totalpry3 }} €</li>
+        <li><b>Total: {{ totales }} €</b></li>
+    </ul>
+</body>
+</html>

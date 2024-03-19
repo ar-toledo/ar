@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Importar Archivo XML</title>
+</head>
+<body>
+    <h1>Importar Archivo XML</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="archivo_xml">Selecciona un archivo XML:</label>
+        <input type="file" name="archivo_xml" accept=".xml" required>
+        <br>
+        <input type="submit" value="Importar XML">
+    </form>
+
+    <a href="{% url 'importar-xml' %}">Volver a Importar XML</a>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Económicos Generales</title>
+    <style>
+        /* Estilos empresariales */
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Datos Económicos Generales</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Proyecto</th>
+                <th>Total de Viviendas</th>
+                <th>Fecha</th>
+                <th>SumaLEE</th>
+                <th>SumaPRY</th>
+                <th>Calculo P3</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proyecto, total_viviendas_proyecto in total_viviendas.items %}
+                <tr>
+                    <td>{{ proyecto }}</td>
+                    <td>{{ total_viviendas_proyecto }}</td>
+                    <td>
+                        {% for proyecto_fecha, fecha in fechas.items %}
+                            {% if proyecto == proyecto_fecha %}
+                                {{ fecha }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for proyecto_sumalee, suma_lee in sumalee.items %}
+                            {% if proyecto == proyecto_sumalee %}
+                                {{ suma_lee }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for proyecto_sumapry, suma_pry in sumapry.items %}
+                            {% if proyecto == proyecto_sumapry %}
+                                {{ suma_pry }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for proyecto_calculo_p3, calculo in calculo_p3.items %}
+                            {% if proyecto == proyecto_calculo_p3 %}
+                                {{ calculo }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

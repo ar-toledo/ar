@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Prefacturas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* Cambiar cursor a mano para filas clickeables */
+        .clickable-row {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resumen</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Libro del Edificio Existente P5</th>
+                <th>Proyecto P5</th>
+                <th>Total Programa 5</th>
+                <th>Proyecto Programa 3</th>
+                <th>Viviendas</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="clickable-row" data-href="{% url 'detalle_zona' zona_id=1 %}">
+                <td>AR ZONA A 2.022 S.L.U</td>
+                <td>{{ totalleea }}</td>
+                <td>{{ totalpry5a }}</td>
+                <td>{{ totalp5a }}</td>
+                <td>{{ totalpry3a }}</td>
+                <td>{{ viviendasa }}</td>
+                <td>{{ totalesa }}</td>
+            </tr>
+            <tr class="clickable-row" data-href="{% url 'detalle_zona' zona_id=2 %}">
+                <td>ZONA B</td>
+                <td>{{ totalleeb }}</td>
+                <td>{{ totalpry5b }}</td>
+                <td>{{ totalp5b }}</td>
+                <td>{{ totalpry3b }}</td>
+                <td>{{ viviendasb }}</td>
+                <td>{{ totalesb }}</td>
+            </tr>
+            <tr class="clickable-row" data-href="{% url 'detalle_zona' zona_id=3 %}">
+                <td>ZONA C</td>
+                <td>{{ totalleec }}</td>
+                <td>{{ totalpry5c }}</td>
+                <td>{{ totalp5c }}</td>
+                <td>{{ totalpry3c }}</td>
+                <td>{{ viviendasc }}</td>
+                <td>{{ totalesc }}</td>
+            </tr>
+            <tr class="clickable-row" data-href="{% url 'detalle_zona' zona_id=4 %}">
+                <td>AR ZONA D 2.022 S.L.</td>
+                <td>{{ totalleed }}</td>
+                <td>{{ totalpry5d }}</td>
+                <td>{{ totalp5d }}</td>
+                <td>{{ totalpry3d }}</td>
+                <td>{{ viviendasd }}</td>
+                <td>{{ totalesd }}</td>
+            </tr>
+            <tr class="clickable-row" data-href="{% url 'detalle_zona' zona_id=5 %}">
+                <td>ZONA E</td>
+                <td>{{ totalleee }}</td>
+                <td>{{ totalpry5e }}</td>
+                <td>{{ totalp5e }}</td>
+                <td>{{ totalpry3e }}</td>
+                <td>{{ viviendase }}</td>
+                <td>{{ totalese }}</td>
+            </tr>
+            <tr>
+                <td>TOTALES</td>
+                <td>{{ totallee }}</td>
+                <td>{{ totalpry5 }}</td>
+                <td>{{ totalp5 }}</td>
+                <td>{{ totalpry3 }}</td>
+                <td>{{ viviendas }}</td>
+                <td>{{ totales }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Lista de Prefacturas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Proyecto</th>
+                <th>Para</th>
+                <th>Información</th>
+                <th>Fecha</th>
+                <th>Número de Prefactura</th>
+                <th>Base</th>
+                <th>IVA</th>
+                <th>Total</th>
+                <th>PreFactura</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prefactura in prefacturas %}
+            <tr class="clickable-row" data-href="{% url 'detalle_prefactura' prefactura_id=prefactura.id %}">
+                <td>{{ prefactura.proyecto.cp }}</td>
+                <td>{{ prefactura.get_para_display }}</td>
+                <td>{{ prefactura.informacion }}</td>
+                <td>{{ prefactura.fecha }}</td>
+                <td>{{ prefactura.numero_pre }}</td>
+                <td>{{ prefactura.base }}</td>
+                <td>{{ prefactura.iva }}</td>
+                <td>{{ prefactura.total }}</td>
+                {% if prefactura.prefactura %}
+                        <td><a href="{{ prefactura.prefactura.url }}" target="_blank">Prefactura</a></td>
+                    {% else %}
+                        <td>No hay Prefactura Generada</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const rows = document.querySelectorAll(".clickable-row");
+            rows.forEach(row => {
+                row.addEventListener("click", function() {
+                    window.location.href = this.dataset.href;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

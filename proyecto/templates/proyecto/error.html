@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+</head>
+<body>
+    <h1>Error</h1>
+    <p>{{ error_message }}</p> <!-- Muestra el mensaje de error dinámicamente -->
+
+    <a href="#" onclick="history.go(-1);">Volver atrás</a> <!-- Botón para volver atrás -->
+    <a href="{% url 'importar-xml' %}">Intentar de nuevo</a> <!-- Enlace para volver a intentar -->
+</body>
+</html>

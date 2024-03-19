@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de Importación de XML</title>
+</head>
+<body>
+    <h1>Resultados de Importación de XML</h1>
+
+    <h2>Datos del Certificador:</h2>
+    <p>NIF Entidad: {{ nif_entidad }}</p>
+    <p>Comunidad Autónoma: {{ comunidad_autonoma }}</p>
+    <p>Titulación: {{ titulacion }}</p>
+    <p>Fecha: {{ fecha }}</p>
+    <p>NIF: {{ nif }}</p>
+    <p>Nombre y Apellidos: {{ nombre_apellidos }}</p>
+    <p>Razón Social: {{ razon_social }}</p>
+    <p>Municipio: {{ municipio }}</p>
+    <p>Código Postal: {{ codigo_postal }}</p>
+    <p>Provincia: {{ provincia_certificador }}</p>
+    <p>Teléfono: {{ telefono }}</p>
+    <p>Email: {{ email }}</p>
+    <p>Domicilio: {{ domicilio }}</p>
+
+    <h2>Identificación del Edificio:</h2>
+    <p>Referencia Catastral: {{ referencia_catastral }}</p>
+    <p>Provincia: {{ provincia_edificio }}</p>
+    <p>Comunidad Autónoma: {{ comunidad_autonoma_edificio }}</p>
+    <p>Zona Climática: {{ zona_climatica }}</p>
+    <p>Tipo de Edificio: {{ tipo_de_edificio }}</p>
+    <p>Normativa Vigente: {{ normativa_vigente }}</p>
+    <p>Dirección: {{ direccion_edificio }}</p>
+    <p>Nombre del Edificio: {{ nombre_del_edificio }}</p>
+    <p>Procedimiento: {{ procedimiento }}</p>
+    <p>Código Postal: {{ codigo_postal_edificio }}</p>
+    <p>Alcance de Información XML: {{ alcance_informacion_xml }}</p>
+    <p>Municipio: {{ municipio_edificio }}</p>
+    <p>Año de Construcción: {{ ano_construccion }}</p>
+
+    <h2>CALIFICACIÓN ENERGÉTICA:</h2>
+    <p>Consumo de energía primaria no renovable (kWh/m² año): {{ consumo_energia_primaria_no_renovable }}</p>
+    <p>Emisiones de dióxido de carbono (kgCO2/ m² año): {{ emisiones_emisionesco2 }}</p>
+
+    <h2>1. CALIFICACIÓN ENERGÉTICA DEL EDIFICIO EN EMISIONES:</h2>
+    <p>Calefacción (kgCO2/ m² año): {{ emisiones_calefaccion }}</p>
+    <p>ACS (kgCO2/ m² año): {{ emisiones_acs }}</p>
+    <p>Refrigeración (kgCO2/ m² año): {{ emisiones_refrigeracion }}</p>
+    <p>Iluminación (kgCO2/ m² año): {{ emisiones_iluminacion }}</p>
+    <p>Indicador Global: {{ emisiones_global }}</p>
+    <p>Emisiones CO2 por consumo eléctrico (kgCO2/ m² año): {{ emisiones_consumo_electrico }}</p>
+    <p>Emisiones CO2 por consumo eléctrico (kgCO2/ año): {{ emisiones_consumo_electrico_total }}</p>
+    <p>Emisiones CO2 por otros combustibles (kgCO2/ m² año): {{ emisiones_otros_consumos }}</p>
+    <p>Emisiones CO2 por otros combustibles (kgCO2/año): {{ emisiones_otros_consumos_total }}</p>
+
+    <h2>2. CALIFICACIÓN ENERGÉTICA DEL EDIFICIO EN CONSUMO DE ENERGÍA PRIMARIA NO RENOVABLE:</h2>
+    <p>Calefacción (kgCO2/ m² año): {{ consumo_calefaccion }}</p>
+    <p>ACS (kgCO2/ m² año): {{ consumo_acs }}</p>
+    <p>Refrigeración (kgCO2/ m² año): {{ consumo_refrigeracion }}</p>
+    <p>Iluminación (kgCO2/ m² año): {{ consumo_iluminacion }}</p>
+    <p>Indicador Global: {{ consumo_energia_primaria_no_renovable }}</p>
+
+    <h2>3. CALIFICACIÓN PARCIAL DE LA DEMANDA ENERGÉTICA DE CALEFACCIÓN Y REFRIGERACIÓN:</h2>
+    <p>Demanda de calefacción (kWh/m² año]): {{ demanda_calefaccion }}</p>
+    <p>Demanda de refrigeración (kWh/m² año]): {{ demanda_refrigeracion }}</p>
+
+    <h2>PRODUCTIVIDAD DE RENOVABLES:</h2>
+    <p>Energía eléctrica generada y autoconsumida* (kWh/año): {{ energia_generada_autoconsumida }}</p>
+    <p>Consumo de energía final cubierto en calefacción* (%): {{ total_acs }}</p>
+    <p>Consumo de energía final cubierto en refrigeración* (%): {{ total_refrigeracion }}</p>
+    <p>Consumo de energía final cubierto en ACS* (%): {{ total_iluminacion }}</p>
+    <p>Demanda cubierta de ACS* (%): {{ total_global }}</p>
+
+    <h2>ENERGÍA FINAL:</h2>
+    <p>Calefacción (kWh/ m² año): {{ total_calefaccion }}</p>
+    <p>ACS (kWh/ m² año): {{ total_acs }}</p>
+    <p>Refrigeración (kWh/ m² año): {{ total_refrigeracion }}</p>
+    <p>Iluminación (kgCO2/ m² año): {{ total_iluminacion }}</p>
+    <p>Indicador Global: {{ total_global }}</p>
+
+
+    <a href="{% url 'importar-xml' %}">Volver a Importar XML</a>
+</body>
+</html>

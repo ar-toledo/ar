@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Estructura de Carpetas - Nuevo Proyecto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function validarCodigo(event) {
+            var codigo = document.getElementById('codigo').value;
+
+            if (codigo > 9999) {
+                alert("El valor del código no puede ser mayor de 9999");
+                event.preventDefault(); // Evita que se envíe la solicitud POST
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Estructura de Carpetas en Nuevo Proyecto</h1>
+        <form action="{% url 'crear_carpetas' %}" method="post" onsubmit="validarCodigo(event)">
+            {% csrf_token %}
+            <label for="zona">Zona:</label><br>
+            <input type="text" id="zona" name="zona" required><br>
+            
+            <label for="codigo">Código:</label><br>
+            <input type="number" id="codigo" name="codigo" required><br>
+            
+            <label for="nombre_proyecto">Nombre del Proyecto:</label><br>
+            <input type="text" id="nombre_proyecto" name="nombre_proyecto" required><br>
+            
+            <label for="ciudad">Municipio:</label><br>
+            <input type="text" id="ciudad" name="ciudad" required><br>
+            
+            <label for="num_portales">Número de Portales:</label><br>
+            <input type="number" id="num_portales" name="num_portales" required><br>
+            
+            <button type="submit">Crear Estructura</button>
+        </form>
+    </div>
+</body>
+</html>

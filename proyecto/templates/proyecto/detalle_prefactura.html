@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Prefactura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* Cambiar cursor a mano para filas clickeables */
+        .clickable-row {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalle de Prefactura</h1>
+    <table>
+        <tr>
+            <th>Proyecto</th>
+            <td>{{ prefactura.proyecto }}</td>
+        </tr>
+        <tr>
+            <th>Fase</th>
+            <td>{{ prefactura.fase }}</td>
+        </tr>
+        <tr>
+            <th>Expediente</th>
+            <td>{{ prefactura.expediente }}</td>
+        </tr>
+        <tr>
+            <th>Tipo</th>
+            <td>{{ prefactura.get_tipo_display }}</td>
+        </tr>
+        <tr>
+            <th>Para</th>
+            <td>{{ prefactura.get_para_display }}</td>
+        </tr>
+        <tr>
+            <th>Información</th>
+            <td>{{ prefactura.informacion }}</td>
+        </tr>
+        <tr>
+            <th>Fecha</th>
+            <td>{{ prefactura.fecha }}</td>
+        </tr>
+        <tr>
+            <th>Número de Prefactura</th>
+            <td>{{ prefactura.numero_pre }}</td>
+        </tr>
+        <tr>
+            <th>Viviendas</th>
+            <td>{{ prefactura.viviendas }}</td>
+        </tr>
+        <tr>
+            <th>Ayuda</th>
+            <td>{{ prefactura.ayuda }}</td>
+        </tr>
+        <tr>
+            <th>LE</th>
+            <td>{{ prefactura.le }}</td>
+        </tr>
+        <tr>
+            <th>ITE</th>
+            <td>{{ prefactura.ite }}</td>
+        </tr>
+        <tr>
+            <th>IVA</th>
+            <td>{{ prefactura.iva }}</td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td>{{ prefactura.total }}</td>
+        </tr>
+        <tr>
+            {% if prefactura.prefactura %}
+            <tr>
+                <th>PreFactura</th>
+                <td><a href="{{ prefactura.prefactura.url }}" target="_blank">Ver Prefactura</a></td>
+            </tr>
+            {% else %}
+            <tr>
+                <th>PreFactura</th>
+                <td>No hay Prefactura Generada</td>
+            </tr>
+        {% endif %}
+        </tr>
+    </table>
+</body>
+</html>

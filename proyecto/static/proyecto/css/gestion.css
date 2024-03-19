@@ -1,0 +1,403 @@
+table {
+  word-wrap: break-word;      /* Permite que las palabras largas se rompan y pasen a la siguiente línea */
+  overflow-wrap: break-word;
+  table-layout: fixed;
+  width: 100%;
+  border: 0px solid #000000;
+  background-color: #ffffff;
+}
+
+.columna-centrada {
+  background-color: white;
+  color: black;
+  position: relative;
+  z-index: 1; /* Esto hará que el elemento se superponga a otros con un z-index menor */
+  text-align: center;
+  font-size: 16px;
+  padding: 10px; /* Esto añade 10px de espacio alrededor del contenido del elemento */
+}
+
+.contenido-celda {
+  word-break: break-word; /* Esto permitirá que las palabras se rompan en nuevas líneas */
+  overflow-wrap: break-word; /* Esto permitirá que las palabras largas se rompan y pasen a la siguiente línea */
+}
+
+th {
+  word-wrap: break-word;      /* Permite que las palabras largas se rompan y pasen a la siguiente línea */
+  overflow-wrap: break-word;  /* Similar a word-wrap, pero más moderno. */
+  background-color: #ffffff;
+  border: 0px solid #000000;
+}
+
+td {
+  word-wrap: break-word;      /* Permite que las palabras largas se rompan y pasen a la siguiente línea */
+  overflow-wrap: break-word;
+  border: 0px solid #000000;
+}
+
+.intro-img {
+  width: 25%;
+  margin: 0 auto;
+  display: block;
+}
+
+.img-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-container img {
+  margin-right: 100px; 
+}
+
+.img-container img:last-child {
+  margin-right: 10px;
+
+}
+
+.centered {
+  text-align: center;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.navbar-container {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s ease-in-out;
+}
+
+.form-container {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    margin: 0 auto; /* Added this to center the form */
+}
+
+label, input {
+    display: block;
+    width: 90%; /* Reduced from 100% to give some space on the sides */
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    text-align: center; /* Added this to center the text */
+    margin: 0 auto; /* Added this to center the elements */
+}
+
+input {
+    background-color: #202020;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 1px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form-row > div {
+    width: 45%;
+}
+
+button {
+    background-color: #808080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.a-button {
+    background-color: #808080;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.a-button:hover {
+    background-color: #808080;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+select {
+  display: block;
+  width: 90%; /* Para coincidir con tus otros campos de entrada */
+  font-size: 16px;
+  color: white;
+  text-align: center; /* Para centrar el texto */
+  margin: 0 auto; /* Para centrar el elemento */
+  background-color: #202020;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* Para estilizar la flecha desplegable del select en algunos navegadores */
+select::-ms-expand {
+  display: none;
+}
+
+/* Para eliminar el contorno azul que aparece cuando el select está enfocado */
+select:focus {
+  outline: none;
+}
+
+.pclass {
+  background-color: #202020;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  display: block;
+  width: 90%; /* Reduced from 100% to give some space on the sides */
+  font-size: 16px;
+  color: white;
+  text-align: center; /* Added this to center the text */
+  margin: 10px auto; /* Changed from 0 auto to 10px auto to add space around the elements */
+  margin-bottom: 20px;
+  overflow-wrap: break-word; /* Added this to prevent the text from overflowing */
+}
+
+.pclass-2 {
+  background-color: #202020;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  display: block;
+  width: 90%; /* Reduced from 100% to give some space on the sides */
+  font-size: 16px;
+  color: white;
+  text-align: center; /* Added this to center the text */
+  margin: 10px auto; /* Changed from 0 auto to 10px auto to add space around the elements */
+  margin-bottom: 20px;
+  overflow-wrap: break-word; /* Added this to prevent the text from overflowing */
+  margin: 0;
+}
+
+.pinfo {
+  background-color: #202020;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  display: block;
+  width: 90%; /* Reduced from 100% to give some space on the sides */
+  font-size: 16px;
+  color: white;
+  text-align: center; /* Added this to center the text */
+  margin: 10px auto; /* Changed from 0 auto to 10px auto to add space around the elements */
+  margin-bottom: 20px;
+  overflow-wrap: break-word; /* Added this to prevent the text from overflowing */
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 80%; /* Hace que el contenedor ocupe el 80% del ancho de la pantalla */
+  margin: 0 auto; /* Centra el contenedor en la pantalla */
+}
+
+.grid-item {
+  text-align: center; /* Centra el texto */
+  color: black; /* Hace que el texto sea negro */
+}
+
+.grid-item a {
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  color: black; /* Hace que el texto del enlace sea negro */
+  font-size: 20px;
+}
+
+.grid-item a:hover {
+  text-decoration: underline; /* Añade un subrayado al enlace cuando se pasa el ratón por encima */
+  color: #333; /* Hace que el color del enlace sea un negro más ligero cuando se pasa el ratón por encima */
+}
+
+.table-2 {
+  margin: 0 auto; /* Centra la tabla horizontalmente */
+  overflow-x: auto !important; /* Permite el desplazamiento horizontal si es necesario */
+}
+
+.th-2 {
+  position: sticky;
+  top: 0; /* Ajusta este valor según tus necesidades */
+  background-color: white; /* Asegúrate de que el fondo no sea transparente */
+  border: 1px solid #000000;
+  word-wrap: break-word;
+  white-space: nowrap; /* Evita que el texto se envuelva a la línea siguiente */
+  overflow: hidden; /* Oculta cualquier contenido que se extienda más allá de los límites de la celda */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo para caber en la celda */
+  min-width: 14px; /* Establece un ancho mínimo para las celdas */
+  font-size: 10px;
+  text-align: center;
+}
+
+.td-2 {
+  border: 1px solid #000000;
+  word-wrap: break-word;
+  overflow: hidden; /* Oculta cualquier contenido que se extienda más allá de los límites de la celda */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo para caber en la celda */
+  min-width: 10px; /* Establece un ancho mínimo para las celdas */
+  font-size: 12px;
+  word-break: break-word; /* Esto permitirá que las palabras se rompan en nuevas líneas */
+  overflow-wrap: break-word; /* Esto permitirá que las palabras largas se rompan y pasen a la siguiente línea */
+  text-align: center;
+  
+}
+
+.tr {
+  border: 3px solid #000000;
+  border-bottom: 3px solid #000000;
+}
+
+.td-5 {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  font-size: 12px;
+}
+
+.td-3 {
+  text-align: center;
+  border: 3px;
+  font-size: 12px;
+  border-bottom: 1px solid #000000;
+}
+
+.td-6 {
+  text-align: center;
+  border: 3px;
+  font-size: 12px;
+  border-bottom: 1px solid #000000;
+}
+
+.td-6:nth-child(even) {background-color: #f2f2f2;}
+
+.th-3 {
+  text-align: center;
+  font-weight: bold;
+  border: 3px;
+  font-size: 12px;
+  border-bottom: 1px solid #000000;
+  background-color: #c2c2c2;
+  padding: 05px;
+}
+
+.td-3 a {
+  color: inherit; 
+  text-decoration: none;
+}
+
+.td-3 a:hover {
+  color: inherit;
+}
+
+.td-4 {
+    background-color: #202020;
+    color: white;
+    padding: 05px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+    text-align: center;
+    height: 50px;
+    font-size: 12px;
+  }
+
+  .td-4 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .td-4 a:hover {
+    font-size: 16px;
+    color: inherit;
+    text-decoration: none;
+  }
+  
+
+.td-3:hover {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+.td-6:hover {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+.th-5 {
+    background-color: #7a7a7a;
+    color: white;
+    padding: 05px;
+    border: none;
+    text-align: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+
+.tabla-container {
+  width: 98%;
+  margin: 0 auto; /* Centrar horizontalmente */
+  overflow-x: auto; /* Permite el desplazamiento horizontal si es necesario */
+}
+
+.button-group-container {
+  background-color: rgb(255, 255, 255);
+  display: flex; 
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1px;
+  width: 100vw;
+  margin: auto; /* Centra el contenedor */
+}
+.dropdown-item {
+transition: background-color 0.3s ease; /* Añade una transición suave al cambiar el color de fondo */
+}
+.dropdown-item:hover {
+  background-color: #333; /* Cambia a un negro más claro cuando pasas el mouse */
+}
+.btn-group {
+  margin: 5px;
+}
+
+.dropdown-item.selected {
+  color: black;
+}

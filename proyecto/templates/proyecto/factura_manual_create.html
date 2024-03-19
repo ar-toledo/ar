@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Factura Manual</title>
+    <!-- Agrega jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 55%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .table-container {
+            max-height: none; /* Elimina el límite de altura */
+            overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+            margin-bottom: 10px; /* Añade margen inferior para separar del botón */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            border-bottom: 1px solid #ffffff;
+        }
+        th {
+            background-color: #ffffff;
+        }
+        button[type="button"],
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="button"]:hover,
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function validarCodigo(event) {
+            var codigo = document.getElementById('codigo').value;
+
+            if (codigo > 9999) {
+                alert("El valor del código no puede ser mayor de 9999");
+                event.preventDefault(); // Evita que se envíe la solicitud POST
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Factura Manual</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {{ item_formset.management_form }}
+            <div class="table-container">
+                <table id="item_table">
+                    <tbody>
+                        <tr>
+                            <th><label for="id_itemsfacturamanual_set-0-opciones">OPCIONES:</label></th>
+                            <td>
+                                <select name="itemsfacturamanual_set-0-opciones" id="id_itemsfacturamanual_set-0-opciones">
+                                    <option value="">---------</option>
+                                    <option value="0" selected="">Linea de Texto</option>
+                                    <option value="1">Gestión</option>
+                                    <option value="2">Dirección Facultativa</option>
+                                    <option value="3">Dirección de Ejecución</option>
+                                    <option value="4">Coordinador de seguridad</option>
+                                    <option value="5">Certificación</option>
+                                    <option value="6">Tasa de solicitud de licencia</option>
+                                    <option value="7">Comisiones</option>
+                                    <option value="8">Intereses</option>
+                                    <option value="9">Notario</option>
+                                </select>
+                            </td>
+                            <th><label for="id_itemsfacturamanual_set-0-linea">CONCEPTO:</label></th>
+                            <td>
+                                <input type="text" name="itemsfacturamanual_set-0-linea" maxlength="100" id="id_itemsfacturamanual_set-0-linea">
+                            </td>
+                            <th><label for="id_itemsfacturamanual_set-0-iva">IVA:</label></th>
+                            <td>
+                                <input type="number" name="itemsfacturamanual_set-0-iva" step="any" id="id_itemsfacturamanual_set-0-iva">
+                            </td>
+                            <th><label for="id_itemsfacturamanual_set-0-importe">IMPORTE:</label></th>
+                            <td>
+                                <input type="number" name="itemsfacturamanual_set-0-importe" step="any" id="id_itemsfacturamanual_set-0-importe">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Botón para agregar más filas -->
+            <button type="button" id="add_row">Agregar línea</button>
+            <br></br> <!-- Cambia este salto de línea por el margen inferior deseado -->
+            <button type="submit">Guardar</button>
+        </form>
+
+        <!-- Agrega el script jQuery -->
+        <script>
+            $(document).ready(function() {
+                // Maneja la adición de filas al hacer clic en el botón
+                $('#add_row').click(function() {
+                    // Encuentra el último índice actual de las filas
+                    var total_forms = $('#id_itemsfacturamanual_set-TOTAL_FORMS').val();
+                    // Clona la última fila del formset
+                    var new_row = $('#item_table tr:last').clone();
+                    // Actualiza los atributos de los campos del nuevo elemento clonado
+                    new_row.find(':input').each(function() {
+                        var name = $(this).attr('name').replace('-' + (total_forms-1) + '-', '-' + total_forms + '-');
+                        var id = 'id_' + name;
+                        $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+                    });
+                    // Incrementa el número total de formas en el formset
+                    $('#id_itemsfacturamanual_set-TOTAL_FORMS').val(parseInt(total_forms) + 1);
+                    // Agrega el nuevo elemento clonado al final de la tabla
+                    $('#item_table tbody').append(new_row);
+                });
+            
+                // Maneja el cambio en la selección de opciones para todas las filas
+                $(document).on('change', '[id^=id_itemsfacturamanual_set-][id$=-opciones]', function() {
+                    var opcionSeleccionada = $(this).val();
+                    var linea = '';
+                    var iva = 0.0;
+                    var id_prefix = $(this).attr('id').split('-')[0] + '-' + $(this).attr('id').split('-')[1] + '-';
+        
+                    if (opcionSeleccionada === '0') {
+                        linea = '';
+                        iva = 0.0;
+                    } else if (opcionSeleccionada >= '1' && opcionSeleccionada <= '4') {
+                        linea = $(this).find(':selected').text();
+                        iva = 21.0;
+                    } else if (opcionSeleccionada >= '6' && opcionSeleccionada <= '9') {
+                        linea = $(this).find(':selected').text();
+                        iva = 0.0;
+                    } else if (opcionSeleccionada >= '5') {
+                        linea = $(this).find(':selected').text();
+                        iva = 10.0;
+                    }
+                    // Actualiza los campos solo en la fila actual
+                    $(this).closest('tr').find('[id$=-linea]').val(linea);
+                    $(this).closest('tr').find('[id$=-iva]').val(iva);
+                });
+        
+                // Función para validar el formulario antes de enviarlo
+                function validarFormulario() {
+                    // Comprobación de campos vacíos
+                    var camposVacios = $('[id$=-opciones], [id$=-linea], [id$=-iva], [id$=-importe]').filter(function() {
+                        return $(this).val() === '';
+                    });
+        
+                    if (camposVacios.length > 0) {
+                        alert("Por favor, complete todos los campos.");
+                        return false;
+                    }
+        
+                    return true;
+                }
+        
+                // Asignar la función de validación al evento 'submit' del formulario
+                $('form').on('submit', function() {
+                    return validarFormulario();
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

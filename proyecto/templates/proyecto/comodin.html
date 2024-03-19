@@ -1,0 +1,168 @@
+<!-- proyecto/bbtt_info.html -->
+
+{% extends "proyecto/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Proyecto</title>
+    <style>
+        .contenedor {
+            display: flex;
+            justify-content: space-between;
+        }
+        .cuadro {
+            width: 45%; /* Ajusta el ancho según tus necesidades */
+            display: inline-block; /* O puedes usar display: inline-flex; */
+            margin-right: 5%; /* Espacio entre los cuadros */
+            box-sizing: border-box; /* Para incluir el padding y el borde en el ancho total */
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ cp }}</h1>
+    <h1>Información del Proyecto</h1>
+
+    <!-- 1er cuadro -->
+    <h2>1er cuadro</h2>
+    <p>Viviendas totales: {{ viviendas }}</p>
+    <p>Viviendas vulnerables: {{ num_solicitudes_vulnerables }}</p>
+    <p>M2 comerciales que hacer parte de la rehabilitación: {{ metros_comercial }}</p>
+    <p>Inversión en viviendas: {{ inversion_viviendas|floatformat:2 }}</p>
+    <p>Inversión en locales: {{ inversion_locales|floatformat:2 }}</p>
+    <p>Amianto: {{ amianto|floatformat:2 }}</p>
+    <p>Instalaciones subvencionables: {{ instalaciones_subvencionables|floatformat:2 }}</p>
+    <p>Inversión total subvencionable con IVA: {{ inversion_total_subvencionable_con_iva|floatformat:2 }}</p>
+    <p>Tasas y licencias: {{ tasas_y_licencias|floatformat:2 }}</p>
+    <p>Instalaciones no subvencionables: {{ instalaciones_no_subvencionables|floatformat:2 }}</p>
+    <p>Total no subvencionable: {{ total_no_subvencionable|floatformat:2 }}</p>
+    <p>Inversión total: {{ inversion_total|floatformat:2 }}</p>
+    <p>Inversión realizada en el proyecto: {{ inversion_realizada_proyecto|floatformat:2 }}</p>
+    <p>Inversión pendiente de realizar: {{ inversion_pendiente_de_realizar|floatformat:2 }}</p>
+    <p>Inversión subvencionable pendiente de realizar: {{ inversion_subvencionable_pendiente_de_realizar|floatformat:2 }}</p>
+    <p>Do gastos dirección obra: {{ do_gastos_direccion_obra|floatformat:2 }}</p>
+    <p>B13 B20: {{ b13_b20|floatformat:2 }}</p>
+    <p>B11 B12: {{ b11_b12|floatformat:2 }}</p>
+    <p>B11 B12 80: {{ b11_b12_80|floatformat:2 }}</p>
+    <p>B11 B12 80 B13 B20: {{ b11_b12_80_b13_b20|floatformat:2 }}</p>
+    <p>Gestión AR: {{ gestion_ar|floatformat:2 }}</p>
+
+    <!-- 2do cuadro -->
+    <h2>2do cuadro</h2>
+    <p>Base licitación proyecto con IVA: {{ base_licitacion_proyecto_con_iva|floatformat:2 }}</p>
+    <p>Base licitación proyecto con IVA total: {{ base_licitacion_proyecto_con_iva_total|floatformat:2 }}</p>
+    <p>Gastos financieros, notarías, tasaciones: {{ gastos_financieros_notarias_tasaciones|floatformat:2 }}</p>
+    <p>Gastos financieros, notarías, tasaciones amianto: {{ gastos_financieros_notarias_tasaciones_amianto|floatformat:2 }}</p>
+    <p>Gastos financieros, notarías, tasaciones instalaciones subvencionables: {{ gastos_financieros_notarias_tasaciones_instalaciones_subvencionables|floatformat:2 }}</p>
+    <p>Gastos financieros, notarías, tasaciones instalaciones no subvencionables: {{ gastos_financieros_notarias_tasaciones_instalaciones_no_subvencionables|floatformat:2 }}</p>
+    <p>Gastos financieros, notarías, tasaciones total: {{ gastos_financieros_notarias_tasaciones_total|floatformat:2 }}</p>
+    <p>Abile: {{ abile|floatformat:2 }}</p>
+    <p>Abile amianto: {{ abile_amianto|floatformat:2 }}</p>
+    <p>Abile instalaciones subvencionables: {{ abile_instalaciones_subvencionables|floatformat:2 }}</p>
+    <p>Abile instalaciones no subvencionables: {{ abile_instalaciones_no_subvencionables|floatformat:2 }}</p>
+    <p>Abile total: {{ abile_total|floatformat:2 }}</p>
+    <p>Imprevistos: {{ imprevistos|floatformat:2 }}</p>
+    <p>Imprevistos amianto: {{ imprevistos_amianto|floatformat:2 }}</p>
+    <p>Imprevistos instalaciones subvencionables: {{ imprevistos_instalaciones_subvencionables|floatformat:2 }}</p>
+    <p>Imprevistos instalaciones no subvencionables: {{ imprevistos_instalaciones_no_subvencionables|floatformat:2 }}</p>
+    <p>Imprevistos total: {{ imprevistos_total|floatformat:2 }}</p>
+    <p>PEC con IVA: {{ pec_con_iva|floatformat:2 }}</p>
+    <p>PEC con IVA amianto: {{ pec_con_iva_amianto|floatformat:2 }}</p>
+    <p>PEC con IVA instalaciones subvencionables: {{ pec_con_iva_instalaciones_subvencionables|floatformat:2 }}</p>
+    <p>PEC con IVA instalaciones no subvencionables: {{ pec_con_iva_instalaciones_no_subvencionables|floatformat:2 }}</p>
+    <p>PEC con IVA total: {{ pec_con_iva_total|floatformat:2 }}</p>
+    <p>PEC sin IVA: {{ pec_sin_iva|floatformat:2 }}</p>
+    <p>PEC sin IVA amianto: {{ pec_sin_iva_amianto|floatformat:2 }}</p>
+    <p>PEC sin IVA instalaciones subvencionables: {{ pec_sin_iva_instalaciones_subvencionables|floatformat:2 }}</p>
+    <p>PEC sin IVA instalaciones no subvencionables: {{ pec_sin_iva_instalaciones_no_subvencionables|floatformat:2 }}</p>
+    <p>PEC sin IVA total: {{ pec_sin_iva_total|floatformat:2 }}</p>
+
+    <!-- 3er cuadro -->
+    <h2>3er cuadro</h2>
+    <p>Ayuda para viviendas: {{ ayuda_viviendas|floatformat:2 }}</p>
+    <p>Ayuda para locales: {{ ayuda_locales|floatformat:2 }}</p>
+    <p>Subvención total: {{ subvencion_total|floatformat:2 }}</p>
+    <p>Subvención después de deducciones: {{ subvencion_despues_deducciones|floatformat:2 }}</p>
+
+    <!-- 4to cuadro (se arma con el 2do cuadro) -->
+    <h2>4to cuadro</h2>
+    <!-- Puedes completar esta sección utilizando las variables del 2do cuadro -->
+
+    <!-- 5to cuadro -->
+    <h2>5to cuadro</h2>
+    <p>PEC sin IVA amianto final: {{ pec_sin_iva_amianto_final|floatformat:2 }}</p>
+    <p>PEC sin IVA instalaciones subvencionables final: {{ pec_sin_iva_instalaciones_subvencionables_final|floatformat:2 }}</p>
+    <p>PEC sin IVA instalaciones no subvencionables final: {{ pec_sin_iva_instalaciones_no_subvencionables_final|floatformat:2 }}</p>
+    <p>PEC sin IVA base licitación proyecto con IVA final: {{ pec_sin_iva_base_licitacion_proyecto_con_iva_final|floatformat:2 }}</p>
+    <p>PEC sin IVA base licitación proyecto con IVA total final: {{ pec_sin_iva_base_licitacion_proyecto_con_iva_total_final|floatformat:2 }}</p>
+
+    <!-- 6to cuadro -->
+    <h2>6to cuadro</h2>
+    <p>Viviendas no vulnerables: {{ viviendas_no_vulnerables|floatformat:2 }}</p>
+    <p>M2 locales: {{ m2_locales|floatformat:2 }}</p>
+    <p>Subvención total no vulnerables AR: {{ subvencion_total_no_vulnerables_ar|floatformat:2 }}</p>
+    <p>Subvención total no vulnerables JCCM: {{ subvencion_total_no_vulnerables_jccm|floatformat:2 }}</p>
+    <p>Subvención total vulnerables AR: {{ subvencion_total_vulnerables_ar|floatformat:2 }}</p>
+    <p>Subvención total vulnerables JCCM: {{ subvencion_total_vulnerables_jccm|floatformat:2 }}</p>
+    <p>Menor subvención no vulnerables: {{ menor_sub_no_vul|floatformat:2 }}</p>
+    <p>Menor subvención vulnerables: {{ menor_sub_vul|floatformat:2 }}</p>
+    <p>Total subvención: {{ total_subvencion_p3|floatformat:2 }}</p>
+    <p>Anticipo 25%: {{ anticipo|floatformat:2 }}</p>
+    <p>Gestión AR: {{ gestion_ar|floatformat:2 }}</p>
+    <p>Gestión JCCM: {{ gestion_jccm|floatformat:2 }}</p>
+    <p>% participación de viviendas: {{ porcentaje_viviendas|floatformat:8 }}</p>
+
+    <!-- 7mo cuadro -->
+    <div class="contenedor">
+        <div class="cuadro">
+            <h2>AR</h2>
+            <p>Coste estimado para el total de las actuaciones: {{ total_incluido_no_subv_ar|floatformat:2 }}</p>
+            <p>Obra civil vinculada a la actuación: {{ base_licitacion_proyecto_con_iva|floatformat:2 }}</p>
+            <p>Subvenciones anteriores: {{ subvenciones_anteriores|floatformat:2 }}</p>
+            <p>D.O. Honorarios de los profesionales intervinientes: {{ do_gastos_direccion_obra|floatformat:2 }}</p>
+            <p>Redacción del proyecto: {{ inversion_realizada_proyecto|floatformat:2 }}</p>
+            <p>Gestión: {{ gestion_ar|floatformat:2 }}</p>
+            <p>Retirada de amianto: {{ amianto|floatformat:2 }}</p>
+            <p>Coste estimado total actuaciones subvencionables: {{ coste_estimado_total_actuaciones_subvencionables_ar|floatformat:2 }}</p>
+            <p>TOTAL INCLUIDO NO SUBV.: {{ total_incluido_no_subv_ar|floatformat:2 }}</p>
+        </div>
+        
+        <!-- 8vo cuadro -->
+        <div class="cuadro">
+            <h2>JCCM</h2>
+            <p>Coste estimado para el total de las actuaciones: {{ total_incluido_no_subv_jccm|floatformat:2 }}</p>
+            <p>Obra civil vinculada a la actuación: {{ base_licitacion_proyecto_con_iva|floatformat:2 }}</p>
+            <p>Subvenciones anteriores: {{ subvenciones_anteriores|floatformat:2 }}</p>
+            <p>D.O. Honorarios de los profesionales intervinientes: {{ do_gastos_direccion_obra|floatformat:2 }}</p>
+            <p>Redacción del proyecto: {{ inversion_realizada_proyecto|floatformat:2 }}</p>
+            <p>Gestión: {{ gestion_jccm|floatformat:2 }}</p>
+            <p>Retirada de amianto: {{ amianto|floatformat:2 }}</p>
+            <p>Coste estimado total actuaciones subvencionables: {{ coste_estimado_total_actuaciones_subvencionables_jccm|floatformat:2 }}</p>
+            <p>TOTAL INCLUIDO NO SUBV.: {{ total_incluido_no_subv_jccm|floatformat:2 }}</p>
+        </div>
+
+        <!-- 9no cuadro -->
+        <div class="cuadro">
+            <h2>SIN IVA</h2>
+            <p>Coste estimado para el total de las actuaciones: {{ sin_iva_total_incluido_no_subv_jccm|floatformat:2 }}</p>
+            <p>Obra civil vinculada a la actuación: {{ sin_iva_base_licitacion_proyecto_con_iva|floatformat:2 }}</p>
+            <p>Subvenciones anteriores: {{ sin_iva_subvenciones_anteriores|floatformat:2 }}</p>
+            <p>D.O. Honorarios de los profesionales intervinientes: {{ sin_iva_do_gastos_direccion_obra|floatformat:2 }}</p>
+            <p>Redacción del proyecto: {{ sin_iva_suma_ayuda_proyecto|floatformat:2 }}</p>
+            <p>Gestión: {{ sin_iva_gestion_jccm|floatformat:2 }}</p>
+            <p>Retirada de amianto: {{ sin_iva_amianto|floatformat:2 }}</p>
+            <p>Coste estimado total actuaciones subvencionables: {{ sin_iva_coste_estimado_total_actuaciones_subvencionables_jccm|floatformat:2 }}</p>
+            <p>TOTAL INCLUIDO NO SUBV.: {{ sin_iva_total_incluido_no_subv_jccm|floatformat:2 }}</p>
+        </div>
+    </div>
+    <p>Subvención: {{ subvencion_1|floatformat:2 }}</p>
+    <p>Subvención: {{ subvencion_2|floatformat:2 }}</p>
+</body>
+</html>
+
+{% endblock %}
